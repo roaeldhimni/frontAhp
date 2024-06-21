@@ -1,0 +1,391 @@
+<style>
+  .custom-tabview {
+    background-color: #9dc2a4;
+    /* Couleur de fond personnalisée */
+  }
+
+  .container-etape {
+    background-color: #d7d2ec87;
+    /* Couleur de fond personnalisée */
+    padding: 20px;
+    /* Ajoutez un remplissage pour l'espace autour du contenu */
+    border-radius: 10px;
+    /* Ajoutez une bordure arrondie */
+    margin: 20px auto;
+    /* Ajustez la marge pour réduire l'espace blanc */
+    max-width: 80%;
+    /* Définit une largeur maximale pour éviter que le cadre ne devienne trop large */
+  }
+
+  /* Centrer le contenu de l'étape 1 */
+  .custom-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Style pour le titre */
+  .custom-title {
+    font-size: 32px;
+    color: #008b6d;
+    /* Couleur différente */
+    font-family: 'Arial', sans-serif;
+    /* Police différente */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  /* Styles supplémentaires pour les labels et les inputs */
+  .custom-step label {
+    font-size: 18px;
+    color: #333;
+  }
+
+  .custom-step input[type="text"],
+  .custom-step input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+    /* Les deux champs d'entrée auront la même largeur */
+  }
+
+  .custom-step .form-group {
+    margin-bottom: 20px;
+  }
+
+  .custom-step button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .custom-step button:hover {
+    background-color: #0056b3;
+  }
+
+  p-tabPanel.custom-step button.btn-etape {
+    background-color: #230f9587;
+    /* Couleur bleue */
+    color: #fff;
+    /* Texte blanc */
+  }
+
+  .custom-subtitle {
+    font-size: 24px;
+    color: color;
+    /* Couleur différente */
+    font-family: 'Arial', sans-serif;
+    /* Police différente */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .btn-etape:hover {
+    background-color: #230f9587;
+  }
+
+  .container.bg-light.border.mt-2 {
+    padding: 20px;
+    /* Ajoutez un remplissage pour l'espace autour du contenu */
+    border-radius: 10px;
+    /* Ajoutez une bordure arrondie */
+    max-width: 100%;
+    /* Définissez une largeur maximale personnalisée */
+    margin-left: auto;
+    /* Centrez le conteneur horizontalement */
+    margin-right: auto;
+    /* Centrez le conteneur horizontalement */
+  }
+
+  .sub-criterion-container {
+    background-color: #cce2ed;
+    /* Couleur de fond pour les conteneurs des sous-critères */
+    padding: 20px;
+    /* Ajoutez un remplissage pour l'espace autour du contenu */
+    border-radius: 10px;
+    /* Ajoutez une bordure arrondie */
+    margin: 20px auto;
+    /* Ajustez la marge pour réduire l'espace blanc */
+    max-width: 80%;
+    /* Définit une largeur maximale pour éviter que le cadre ne devienne trop large */
+
+  }
+
+  .custom-select {
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+
+  .table thead th {
+    background-color: #f2f2f2;
+    /* Couleur de fond pour les en-têtes de la matrice */
+  }
+
+
+  .matrix-header {
+    background-color: #f2f2f2;
+    /* Couleur de fond pour la première colonne de la matrice */
+  }
+
+  .cr-value {
+    font-weight: bold;
+    /* Mettre en gras */
+    color: black;
+    /* Couleur rouge */
+    font-size: 20px;
+    /* Taille de police plus grande */
+  }
+
+  .criteria-header {
+    color: rgb(133, 198, 163);
+    /* Couleur de texte différente */
+    text-align: left;
+    /* Alignement du texte à gauche */
+  }
+
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .custom-table th,
+  .custom-table td {
+    padding: 8px;
+    text-align: left;
+    color: #008b6d;
+    border: 1px solid #91d5bb;
+  }
+
+  .custom-title {
+    font-size: 18px;
+    color: black;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .btn-primary {
+    background-color: #230f9587;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+
+  .custom-table {
+    width: 100%;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+
+  /* Optionnel : Vous pouvez personnaliser davantage les styles selon vos besoins */
+
+  .card {
+    border-radius: 10px;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+
+  .mr-2 {
+    margin-right: 0.5rem;
+  }
+
+  .mx-sm-3 {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  /* Styles personnalisés pour les cartes */
+  .custom-card {
+    border-radius: 10px;
+    background-color: #bcb5da87;
+    /* Couleur de fond de la carte */
+    border: 1px solid #ced4da;
+    /* Bordure de la carte */
+  }
+
+  .custom-card:hover {
+    box-shadow: 0px 4px 8px rgba(164, 191, 232, 0.1);
+    /* Ombre portée au survol */
+  }
+
+  /* Style personnalisé pour les titres des cartes */
+  .custom-card-title {
+    color: #bcb5da87;
+    /* Couleur du titre */
+    font-size: 20px;
+    /* Taille de police du titre */
+    margin-bottom: 0;
+    /* Marge inférieure du titre */
+  }
+
+  /* Ajoutez d'autres styles personnalisés selon vos besoins */
+</style>
+<main>
+  <section class="section section-lg section-shaped">
+    <div class="shape shape-style-1 shape-primary">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="aa" class="container-etape">
+      <p-tabView [(activeIndex)]="index">
+        <p-tabPanel header="Expert Step" class="custom-step">
+          <div>
+            <h2 class="display-3 custom-title">Input values of the Fuzzy TOPSIS analysis</h2>
+        
+            <!-- Tableau pour afficher les sous-critères -->
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th>Criteria</th>
+                  <!-- Remplacez "criteria" par le nom de votre critère -->
+                  <th *ngFor="let alternative of alternatives">{{ alternative.name }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Boucle sur les sous-critères -->
+                <tr *ngFor="let sousCriter of sousCriters">
+                  <td>{{ sousCriter.name }}</td>
+        
+                  <!-- Boucle sur les alternatives -->
+                  <td *ngFor="let alternative of alternatives">
+                    <!-- Afficher un menu déroulant pour chaque combinaison de sous-critère et alternative -->
+                    <select class="custom-select" [(ngModel)]="facteuralternative[sousCriter.id][alternative.id]">
+                      <option *ngFor="let option of altfact" [value]="option">{{ option }}</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-etape mb-2" (click)="saveSousCriterAlternative();showFinalStep()">Submit</button>
+          </div>
+        </p-tabPanel>
+        
+
+
+        <p-tabPanel >
+          <div *ngIf="envoiReussi" class="custom-step">
+            <h2 class="display-3 custom-title">Thank You!</h2>
+            <div class="container">
+              <p>The data has been successfully sent!</p>
+              <p>Your data has been sent to the decision-maker to determine the final ranking.</p>
+            </div>
+          </div>
+        </p-tabPanel>
+        
+        
+        
+        
+        
+</p-tabView>
+
+      <!--
+  <p-button icon="pi " (click)="openPrev()"> </p-button>
+  <p-button icon="pi " (click)="openNext()"> suivant </p-button>
+  
+  -->
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+
+  </section>
+</main>

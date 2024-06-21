@@ -1,0 +1,79 @@
+<style>
+    .hero-title {
+      color: white;
+    }
+    .special-char {
+        color: rgb(135, 130, 209);
+        font-weight: bold;
+        font-style: italic;
+    }
+    
+    .custom-btn-primary {
+      background-color:#2b189487;
+      color: #fff; /* Texte blanc */
+      padding: 15px 30px; /* Ajoute un remplissage intérieur pour agrandir le bouton */
+      font-size: 18px; /* Augmente la taille de la police */
+      border-radius: 10px; /* Ajoute une bordure arrondie */
+      border: none; /* Supprime la bordure */
+    }
+  
+    .custom-btn-secondary {
+      background-color:#2b189487; /* Couleur bleue */
+      color: #fff; /* Texte blanc */
+      padding: 15px 30px; /* Ajoute un remplissage intérieur pour agrandir le bouton */
+      font-size: 18px; /* Augmente la taille de la police */
+      border-radius: 10px; /* Ajoute une bordure arrondie */
+      border: none; /* Supprime la bordure */
+    }
+  
+    .section-shaped {
+      height: 100vh;
+  }
+  
+  .custom-img {
+      max-width: 80%; /* Définissez la largeur maximale que vous souhaitez pour l'image */
+      height: auto; /* Pour conserver le rapport hauteur-largeur de l'image */
+  }
+  
+  
+  </style>
+  <main>
+    <section class="section section-lg section-shaped">
+        <div class="shape shape-style-1 shape-primary">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <br>
+        
+        <div class="container">
+            <div class="row py-3 align-items-center">
+                <div class="col-md-6 mb-3">
+                    <img src="./assets/img/brand/divers.png" class="img-fluid custom-img" alt="Image">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h1 class="heading-title mb-7" style="text-align: center;"><span class="special-char">CHOIX DE LA METHODE D'AIDE A LA PRISE DE DECISION</span></h1>
+                </div>
+            </div>
+          
+        
+            <div class="row justify-content-end">
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-block custom-btn-primary" (click)="validation()">
+                   AHP-TOPSIS                    </button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-block custom-btn-secondary" (click)="historique()">
+                        FAHP-FTOPSIS
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+  

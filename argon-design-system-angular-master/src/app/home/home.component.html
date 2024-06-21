@@ -1,0 +1,96 @@
+<style>
+.hero-title {
+  color: white;
+}
+.special-char {
+    color: rgb(144, 138, 209);
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+  .btn-auth {
+    background-color: #230f9587; /* Couleur de fond pour le bouton Dashboard */
+    color: #fff; /* Couleur du texte pour le bouton Dashboard */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Ajoute une bordure arrondie */
+    padding: 10px 20px; /* Ajoute un remplissage intérieur */
+    margin-right: 10px; /* Ajoute une marge à droite pour l'espacement */
+}
+
+.btn-auth:hover {
+    background-color: #230f9587; /* Couleur de fond au survol du bouton Dashboard */
+}
+
+.btn-reg {
+    background-color: #230f9587; /* Couleur de fond pour le bouton Déconnexion */
+    color: #fff; /* Couleur du texte pour le bouton Déconnexion */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Ajoute une bordure arrondie */
+    padding: 10px 20px; /* Ajoute un remplissage intérieur */
+}
+
+.btn-reg:hover {
+    background-color: #230f9587; /* Couleur de fond au survol du bouton Déconnexion */
+}
+
+
+
+</style>
+
+<main>
+  <div class="position-relative">
+    <!-- Hero for FREE version -->
+    <section class="section section-lg section-hero section-shaped">
+      <!-- Background circles -->
+      <div class="shape shape-style-1 shape-primary">
+        <span class="span-150"></span>
+        <span class="span-50"></span>
+        <span class="span-50"></span>
+        <span class="span-75"></span>
+        <span class="span-100"></span>
+        <span class="span-75"></span>
+        <span class="span-50"></span>
+        <span class="span-100"></span>
+        
+      </div>
+      
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <img src="./assets/img/brand/mauve2.png" alt="Logo" class="logo img-fluid">
+            </div>
+            <div class="col-lg-6">
+              <div class="text-center">
+                <h1 class="hero-title">Welcome to <span class="special-char">AHP-TOPSIS</span> Plateform</h1>
+                <br>
+                <br>
+                <div class="btn-wrapper">
+                  <a href="/#/login" class="btn btn-lg btn-auth btn-icon mb-3 mb-sm-0">
+                    <span class="btn-inner--icon"><i class="fa fa-sign-in" aria-hidden="true"></i></span>
+                    <span class="btn-inner--text">Authentication</span>
+                  </a>
+                  <br>
+                  <br>
+                  <a href="/#/register" class="btn btn-lg btn-reg btn-icon mb-3 mb-sm-0" target="_blank">
+                    <span class="btn-inner--icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <span class="btn-inner--text">New Registration</span>
+                      <!--<span class="text-danger">NEW</span> Registration</span>-->
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+  </div>
+  <!-- SVG separator  <app-sections></app-sections>-->
+  
+</main>

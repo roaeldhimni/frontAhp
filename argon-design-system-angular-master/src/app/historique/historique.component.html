@@ -1,0 +1,582 @@
+<style>
+  /* Nouveau style pour le fond */
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  .section-shaped {
+    position: relative; /* Assurez-vous que la section est positionnée relativement */
+    padding-top: 20px; /* Réduire l'espace entre le haut de la page et la section */
+  }
+
+  .shape-primary {
+    position: fixed; /* Position fixe pour que le fond reste visible en faisant défiler la page */
+    top: 30;
+    left: 100;
+    width: 100%; /* Couvrir toute la largeur de la fenêtre */
+    z-index: -1; /* Assurez-vous que le fond reste en arrière-plan */
+  }
+
+  /* Nouveau style pour le grand conteneur */
+  .container {
+    width: 80%; /* Largeur du conteneur à 80% de la largeur de la fenêtre */
+    margin: 30px auto; /* Centrage horizontal avec une marge de 30px en haut */
+    position: relative; /* Position relative pour que les autres éléments respectent cette position */
+  }
+
+  .display-3 {
+    margin-bottom: 20px; /* Réduire l'espace entre le titre et le contenu */
+  }
+
+  .separator-bottom {
+    margin-top: 50px; /* Réglage de la marge pour éviter le chevauchement avec le contenu */
+  }
+
+
+
+
+  .section {
+      padding: 15px 0; /* Ajouter un espace autour du contenu */
+    }
+
+    .container {
+      max-width: 2200px; /* Limiter la largeur du contenu */
+      margin: 0 auto; /* Centrer le contenu horizontalement */
+    }
+
+    .card {
+      background-color: #fff; /* Couleur de fond des cartes */
+      border-radius: 15px; /* Ajouter une bordure arrondie */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajouter une ombre légère */
+      transition: box-shadow 0.3s ease; /* Ajouter une transition douce */
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Augmenter l'ombre au survol */
+    }
+
+    .card-body {
+      padding: 15px; /* Ajouter un espacement à l'intérieur de la carte */
+    }
+
+    .badge {
+      margin-right: 10px; /* Espacement entre les badges */
+    }
+    .sub-criterion-card {
+  background-color: #bcb5da87; /* Couleur de fond des cartes de sous-critères */
+  border: none; /* Supprimer la bordure */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajouter une ombre légère */
+  transition: box-shadow 0.3s ease;
+  width: 400px; /* Largeur souhaitée */
+  height: 250px; /* Ajouter une transition douce */
+}
+    .btn-primary {
+      background-color: #007bff; /* Couleur de fond du bouton */
+      color: #fff; /* Couleur du texte du bouton */
+      border: none; /* Supprimer la bordure */
+      border-radius: 5px; /* Ajouter une bordure arrondie */
+      padding: 10px 20px; /* Ajouter un espacement à l'intérieur du bouton */
+      cursor: pointer; /* Afficher un curseur pointer au survol */
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3; /* Couleur de fond du bouton au survol */
+    }
+
+    .icon-shape {
+      width: 50px; /* Taille de l'icône */
+      height: 50px; /* Taille de l'icône */
+      font-size: 24px; /* Taille de la police de l'icône */
+      display: flex; /* Afficher l'icône en tant que flexbox */
+      justify-content: center; /* Centrer l'icône horizontalement */
+      align-items: center; /* Centrer l'icône verticalement */
+      background-color: #230f9587; /* Couleur de fond de l'icône */
+      color: #fff; /* Couleur de l'icône */
+      border-radius: 50%; /* Rendre l'icône circulaire */
+    }
+
+    .icon-shape i {
+      transform: translateY(2px); /* Ajuster la position de l'icône */
+    }
+
+    .special-char {
+      color: #230f9587;
+      font-weight: bold;
+      font-style: italic;
+  }
+  
+   
+  .special-char span {
+      font-size: 24px; /* Taille légèrement plus petite */
+      color: #9ea376; /* Couleur différente */
+      display: block; /* Afficher en tant que bloc */
+      text-align: center; /* Centrer le texte */
+    }
+
+
+   /* Style pour le nouveau décor */
+.custom-icon {
+  width: 50px; /* Largeur du conteneur */
+  height: 50px; /* Hauteur du conteneur */
+  border-radius: 50%; /* Rendre le conteneur circulaire */
+  background-color: #5441c587; /* Couleur de fond */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style pour l'icône à l'intérieur du nouveau décor */
+.custom-icon i {
+  font-size: 20px; /* Taille de l'icône */
+  color: #fff; /* Couleur de l'icône */
+}
+
+/* Style pour l'élément h6 */
+.card-body h6 {
+  text-align: center; /* Centrer le texte */
+  font-size: 20px; /* Taille de police légèrement plus grande */
+  color: black; /* Couleur de texte différente */
+  margin-bottom: 20px; /* Ajouter un espace en bas */
+  font-weight: bold;
+
+}
+
+/* Style pour les balises span avec la classe badge-success */
+.card-body .badge-success {
+  color: black; /* Changer la couleur du texte */
+  background-color: #bfbbd687;
+}
+/* Style pour mettre le texte en gras */
+.card-body div span {
+  font-weight: bold;
+}
+.card-body div {
+  font-weight: bold;
+}
+
+/* Style personnalisé pour le bouton */
+.btn-custom {
+  background-color:#230f9587; /* Couleur de fond */
+  border-radius: 10px; /* Bordures arrondies */
+  padding: 10px 20px; /* Espacement interne */
+  text-decoration: none; /* Suppression du soulignement */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre */
+  transition: background-color 0.3s ease; 
+  /* Animation de transition */
+  
+}
+
+.btn-custom:hover {
+  background-color:#3e2e9787; /* Changement de couleur au survol */
+}
+/* Style pour le texte à l'intérieur du bouton */
+.btn-custom {
+  color: #fff; /* Couleur du texte */
+}
+.custom-card {
+  background-color: #cbe7e6; /* Couleur de fond souhaitée */
+}
+/* Ajoutez des styles personnalisés pour la classe custom-critere-name */
+/* Ajoutez des styles personnalisés pour la classe custom-weight */
+/* Nouveaux styles pour les containers des critères */
+.custom-card {
+  background-color: #cbe7e6; /* Couleur de fond des containers */
+  border-radius: 0px; /* Bordure arrondie */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  transition: box-shadow 0.3s ease; /* Transition douce */
+  width: 315px; /* Largeur souhaitée */
+  height: 200px; /* Hauteur souhaitée */
+  margin: 10px; /* Marge autour des containers */
+  display: inline-flex; /* Affichage en ligne pour que les carrés soient alignés horizontalement */
+  justify-content: center; /* Centrer horizontalement les éléments à l'intérieur */
+  align-items: center; /* Centrer verticalement les éléments à l'intérieur */
+}.custom-cardd {
+  background-color: #cbe7e6; /* Couleur de fond des containers */
+  border-radius: 0px; /* Bordure arrondie */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  transition: box-shadow 0.3s ease; /* Transition douce */
+  width: 350px; /* Largeur souhaitée */
+  height: 250px; /* Hauteur souhaitée */
+  margin: 0px; /* Marge autour des containers */
+  justify-content: center; /* Centrer horizontalement les éléments à l'intérieur */
+  align-items: center; /* Centrer verticalement les éléments à l'intérieur */
+}
+
+
+.criteria-name {
+  font-weight: bold;
+  color: black; /* Couleur de texte souhaitée */
+  text-align: center;
+}
+
+.criteria-name-matrix {
+  font-weight: bold;
+  color: black; /* Couleur de texte souhaitée */
+  text-align: center;
+  text-size-adjust: 10px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.colored-text {
+  color: black; /* Changer la couleur selon votre préférence */
+}
+.header-bg {
+  background-color:#bcb5da87; /* Couleur de fond pour le header */
+}
+
+.first-column-bg {
+background-color: #bcb5da87; /* Couleur de fond pour la première colonne */
+}
+
+/* Nouveaux styles pour le conteneur des cartes */
+/* Nouveaux styles pour les conteneurs de cartes */
+.card-container {
+  display: flex; /* Affichage en flexbox pour les aligner horizontalement */
+  flex-wrap: wrap; 
+  justify-content: flex-start; /* Aligner les cartes à gauche */
+}
+
+/* Nouveaux styles pour les conteneurs de cartes */
+.card-wrapper {
+  flex: 0 0 calc(33.33% - 20px); /* Utilisez calc pour spécifier la largeur et déduire la marge */
+  margin: 10px; /* Marge autour des cartes */
+}
+
+
+
+
+
+</style>
+<main>
+  <section class="section section-lg section-shaped">
+    <div class="shape shape-style-1 shape-primary">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="container py-lg-md d-flex">
+      <div class="col px-0">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1 class="special-char">Project History
+              <br><br><span></span>
+            </h1>
+            <br><br> <br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-lg  pt-lg-0 mt--200">
+    <div class="container">
+      <p-tabView [(activeIndex)]="index">
+        <p-tabPanel header="Etape 1">
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="row row-grid">
+                <div class="col-lg-4" *ngFor="let item of projetAhp; let i = index;">
+                  <div class="card  mb-3 custom-card" style="background-color: #bcb5da87;">
+                    <div class="card-body py-5 d-flex align-items-center">
+                      <!-- Nouveau style pour le décor -->
+                      <div class="mr-4">
+                        <div class="custom-icon">
+                          <i class="ni ni-chart-bar-32"></i>
+                        </div>
+                      </div>
+                      <!-- Contenu aligné à gauche -->
+                      <div >
+                        <h6 >Project : {{item.name}}</h6>
+                        <div>
+                          <span class="badge badge-pill badge-success">Number of criteria : </span>{{item.numbreCriters}}<br>
+                          <span class="badge badge-pill badge-success">Number of alternatives :</span>{{item.numbreAlternatives}}<br>
+                          <span class="badge badge-pill badge-success"> value of CR :</span>{{item.cr}}<br>
+                        </div>
+                        <br>
+                        <a class=" btn-custom   mt-4" (click)="getprojectdetails(item);" style="color:white">Learn more</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Etape 2">
+          <div *ngIf="etap2">
+            <!-- Ajouter un conteneur pour les cartes -->
+            <div class="card-container">
+              <div *ngFor="let item of arrayOne(numberCriters); let i = index;" class="card-wrapper">
+                <div class="card border-info mb-3 custom-card mt-2"  style="background-color: #bcb5da87;"> <!-- Ajoutez la classe custom-card pour le style de la carte -->
+                  <div class="card-body py-5 d-flex align-items-center">
+                    <!-- Nouveau style pour le décor -->
+                    <div class="mr-4">
+                      <div class="custom-icon">
+                        <i class="ni ni-caps-small"></i>
+                      </div>
+                    </div>
+                    <!-- Contenu aligné à gauche -->
+                    <div>
+                      <h6 class="text-dark" style="font-size: 20px">Critere : {{criters[i].name}}</h6> <!-- Ajoutez la classe text-dark pour la couleur du texte -->
+                      <div>
+                        <label for="fname" class="text-dark" style="font-size: 15px; font-weight: bold;">Weights :{{criters[i].poids}} </label>
+                      </div>
+                      
+                      <button *ngIf="!showmodification[i]" (click)="modif(i)" class="btn btn-sm btn-icon btn-primary" type="button" style="font-size: 15px; font-weight: bold;  background-color: #230f9587 ; color: #ffffff;">
+                        <span class="btn-inner--icon" ><i class="ni ni-bold-down" ></i></span> Edit Criteria
+                      </button>
+                      <button (click)="modif(i); edit(criters[i],i)" *ngIf="showmodification[i]" class="btn btn-sm btn-icon btn-primary" type="button" style="font-size: 15px; font-weight: bold; background-color: #230f9587; color: #ffffff;">
+                        <span class="btn-inner--icon"><i class="ni ni-bold-up"></i></span> Edit Criteria
+                      </button>
+                      
+                      <div *ngIf="showmodification[i]">
+                        <label for="fname">Fill the name of the updated criter :</label>
+                        <input type="text" name="nom" [(ngModel)]="criters[i].name">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+           <table class="table custom-table">
+              <thead>
+                <tr class="header-bg">
+                  <th scope="col">Critères</th>
+                  <!-- En-têtes de colonnes avec les noms des critères -->
+                  <th *ngFor="let critere of criters" scope="col" class="bold-text colored-text">{{ critere.name }}</th>
+                  <th>Poids</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Contenu de la matrice -->
+                <ng-container *ngFor="let critere of criters; let i = index">
+                  <tr>
+                    <th class="first-column-bg bold-text colored-text" scope="row">{{ critere.name }}</th>
+                    <ng-container *ngFor="let facteur of relationMatrix[i]; let j = index">
+                      <td>
+                        <select [(ngModel)]="relationMatrix[i][j]" (ngModelChange)="updateInverse(i, j, $event); update(i, j, $event);calculCR();CalculPoidCR()">
+                          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                        </select>
+                      </td>
+                    </ng-container>
+                    <td>{{ critere.poids}}</td>
+                  </tr>
+                </ng-container>
+                
+              </tbody>
+            </table>
+
+    <div *ngIf="criters.length > 0">
+      <!-- CR initial -->
+      <div [hidden]="showNouveauCR">
+          <p style="font-weight: bold; color: black;">CR : {{ criters[0].cr }}</p>
+      </div>
+      <!-- Nouveau CR -->
+      <div [hidden]="!showNouveauCR">
+          <p style="font-weight: bold; color: black;">Nouveau CR : {{ nouveauCR }}</p>
+      </div>
+  </div>
+  
+          
+            <a class="btn btn-custom mt-4" (click)="getsousCriters();" style="font-size: 15px; font-weight: bold; background-color: #230f9587; color: #ffffff;">Show Sub-Criteria</a>
+          </div>
+        </p-tabPanel>
+        
+        <p-tabPanel header="Etape 3">
+          <div *ngIf="etap3">
+            <ng-container *ngIf="criters.length > 0">
+              <div class="mt-4">
+                <h2 class="text-dark mb-3" style="text-align: center"><span class="criteria-name">Criter Name : {{
+                    criters[currentIndex].name }}</span></h2>
+                <div class="row">
+                  <div class="d-flex justify-content-center flex-wrap">
+                    <div class="card mb-3 mr-3 sub-criterion-card d-flex align-items-center justify-content-center"
+                      *ngFor="let sousCritere of sousCriters[currentIndex]; let j = index;">
+                      <div class="mr-4">
+                        <div class="custom-icon">
+                          <i class="ni ni-collection"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <h6 class="text-dark" style="font-weight: bold" >Sub-Criterion: {{sousCritere.name}}</h6>
+                        <label for="fname" class="text-dark custom-weight" style="font-weight: bold">Weights:
+                          {{criters[currentIndex].poids}}</label>
+                        <!-- Bouton Edit Sub -->
+                        <div>
+                          <button *ngIf="!showmodificationsub[currentIndex][j]" (click)="modifsub(currentIndex,j);"
+                            class="btn btn-sm btn-icon btn-primary" type="button"
+                            style="font-size: 12px; font-weight: bold; background-color: #230f9587; color: #ffffff;">
+                            <span class="btn-inner--icon"><i class="ni ni-bold-down"></i></span> Edit Sub Criteria
+                          </button>
+                          <button
+                            (click)="modifsub(currentIndex,j); editsub(sousCriters[currentIndex][j],currentIndex,j);"
+                            *ngIf="showmodificationsub[currentIndex][j]" class="btn btn-sm btn-icon btn-primary"
+                            type="button">
+                            <span class="btn-inner--icon"><i class="ni ni-bold-up"></i></span> Edit Sub Criteria
+                          </button>
+                        </div>
+                        <!-- Entrée de texte pour le nom du critère -->
+                        <div *ngIf="!showmodificationsub[currentIndex][j]">
+                          <label for="fname">Entrer le nom de critere :</label>
+                          <input type="text" name="nom" [(ngModel)]="sousCriters[currentIndex][j].name" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <div *ngFor="let critere of criters; let i = index;">
+              <div *ngIf="i === currentIndex">
+                <h2 class="text-dark mb-3" style="text-align: center"><span class="criteria-name-matrix">Matrix of
+                    Criter {{ critere.name }}</span></h2>
+                <div class="table-responsive">
+                  <table class="table custom-table">
+                    <thead>
+                      <tr class="header-bg">
+                        <th scope="col"></th>
+                        <th *ngFor="let sousCritere of sousCriters[i]; let sousCritereIndex = index" scope="col"
+                          class="bold-text colored-text">{{ sousCritere.name }}</th>
+                        <th>Poids</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let ligne of sousCriteresMatrix[i]; let rowIndex = index">
+                        <tr>
+                          <td class="first-column-bg bold-text colored-text">{{ sousCriters[i][rowIndex].name }}</td>
+                          <ng-container *ngFor="let facteur of ligne; let colIndex = index">
+                            <td>
+                              <select [(ngModel)]="sousCriteresMatrix[i][rowIndex][colIndex]"
+                                (ngModelChange)="updateInverseSCR(i,rowIndex,colIndex, $event);updateSCR(i,rowIndex,colIndex, $event);calculsubCR()" class="custom-select">
+                                <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                              </select>
+                            </td>
+                          </ng-container>
+                          <td>
+                            <span *ngIf="showModifiedWeights[i]">{{ etap3Poids[i][0][rowIndex] }}</span>
+                            <span *ngIf="!showModifiedWeights[i]">{{ sousCriters[i][rowIndex].poids }}</span>
+                          </td>
+                         </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="text-center">
+                  <div *ngIf="sousCriters[i].length > 0">
+                    <!-- CR initial -->
+                    <div [hidden]="showNouveauSubCR[j]">
+                      <p style="font-weight: bold; color: black;">CR : {{ sousCriters[i][0].cr }}</p>
+                    </div>
+                    <!-- Nouveau CR -->
+                    <div [hidden]="!showNouveauSubCR[j]">
+                      <p style="font-weight: bold; color: black;"> CR : {{ nouveauSubCR }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="text-center">
+              </div>
+
+              <button class="btn btn-primary mt-4"
+                *ngIf="etap3 && !relationMatrixAlternativesSousCriteres[currentIndex]" (click)="passerEtape4(critere)"
+                style="font-size: 17px; font-weight: bold; background-color: #230f9587; color: #ffffff;">Show Relation
+                SubCriteria Alternative</button>
+              <button class="btn btn-primary mt-4" (click)="openPrevv()"
+                style="font-size: 17px; font-weight: bold;background-color: #230f9587; color: #ffffff;">Previous</button>
+              <button class="btn btn-primary mt-4" (click)="openNextt()"
+                style="font-size: 17px; font-weight: bold; background-color: #230f9587; color: #ffffff;">Next</button>
+            </div>
+          </div>
+        </p-tabPanel>
+
+        
+        
+ <p-tabPanel header="Etape 4">
+          <div *ngIf="showCriteriaMatrixContent" class="mt-4">
+            <div class="card border-info mb-3 ">
+              <div class="card-body py-5">
+                <h2 class="text-dark mb-3" style="text-align: center"><span class="criteria-name">Matrice des sous-critères avec leurs alternatives</span></h2>
+                
+                <div class="table-responsive">
+                  <table class="table custom-table">
+                    <thead class="header-bg">
+                        <tr>
+                            <th  scope="col">Sous-Critères / Alternatives</th>
+                            <th  *ngFor="let alternative of alternatives" scope="col">{{ alternative.name }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let sousCritere of sousCriteres; let i = index">
+                            <th class="first-column-bg" class="sous-critere-name" scope="row">{{ sousCritere.name }}</th>
+                            <td  *ngFor="let alternative of alternatives; let j = index">
+                                <select [(ngModel)]="relationMatrixSousCriteresAlternatives[i][j]" (ngModelChange)="updateSCRAlt(i,j, $event)" class="custom-select">
+                                    <option *ngFor="let city of citiesAlter" [value]="city">{{ city }}</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+            <button type="btn btn-custom mt-4" class="btn btn-primary" style="font-size: 15px; font-weight: bold; background-color: #230f9587; color: #ffffff;" (click)="goToEtape5()">
+              <span>Voir Rank</span>
+            </button>
+          </div>
+        </div>
+        </p-tabPanel>
+
+    
+        <p-tabPanel header="Etape 5">
+          <div class="mt-4">
+            <h2 class="text-dark mb-3" style="text-align: center"><span class="criteria-name">Alternatives du projet avec leurs ranks</span></h2>
+            <table class="table-responsive"  class="table custom-table">
+              <thead>
+                <tr style="background-color: #bcb5da87;">
+                  <th>Nom de l'alternative</th>
+                  <th>Ci</th>
+                  <th>Rank</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let alternative of alternatives">
+                  <td>{{ alternative.name }}</td>
+                  <td>{{ alternative.ci }}</td>
+                  <td>{{ alternative.rank }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </p-tabPanel>
+
+
+      </p-tabView>
+    </div>
+  </section>
+
+  <div class="separator separator-bottom">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</main>

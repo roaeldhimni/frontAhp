@@ -1,0 +1,794 @@
+<style>
+  .custom-tabview {
+    background-color: #9dc2a4;
+    /* Couleur de fond personnalisée */
+  }
+
+  .container-etape {
+    background-color: #d7d2ec87;
+    /* Couleur de fond personnalisée */
+    padding: 20px;
+    /* Ajoutez un remplissage pour l'espace autour du contenu */
+    border-radius: 10px;
+    /* Ajoutez une bordure arrondie */
+    margin: 20px auto;
+    /* Ajustez la marge pour réduire l'espace blanc */
+    max-width: 80%;
+    /* Définit une largeur maximale pour éviter que le cadre ne devienne trop large */
+  }
+
+  /* Centrer le contenu de l'étape 1 */
+  .custom-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Style pour le titre */
+  .custom-title {
+    font-size: 32px;
+    color: #008b6d;
+    /* Couleur différente */
+    font-family: 'Arial', sans-serif;
+    /* Police différente */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  /* Styles supplémentaires pour les labels et les inputs */
+  .custom-step label {
+    font-size: 18px;
+    color: #333;
+  }
+
+  .custom-step input[type="text"],
+  .custom-step input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+    /* Les deux champs d'entrée auront la même largeur */
+  }
+
+  .custom-step .form-group {
+    margin-bottom: 20px;
+  }
+
+  .custom-step button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .custom-step button:hover {
+    background-color: #0056b3;
+  }
+
+  p-tabPanel.custom-step button.btn-etape {
+    background-color: #230f9587;
+    /* Couleur bleue */
+    color: #fff;
+    /* Texte blanc */
+  }
+
+  .custom-subtitle {
+    font-size: 24px;
+    color: color;
+    /* Couleur différente */
+    font-family: 'Arial', sans-serif;
+    /* Police différente */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .btn-etape:hover {
+    background-color: #230f9587;
+  }
+
+  .container.bg-light.border.mt-2 {
+    padding: 20px;
+    /* Ajoutez un remplissage pour l'espace autour du contenu */
+    border-radius: 10px;
+    /* Ajoutez une bordure arrondie */
+    max-width: 100%;
+    /* Définissez une largeur maximale personnalisée */
+    margin-left: auto;
+    /* Centrez le conteneur horizontalement */
+    margin-right: auto;
+    /* Centrez le conteneur horizontalement */
+  }
+
+  .sub-criterion-container {
+    background-color: #cce2ed;
+    /* Couleur de fond pour les conteneurs des sous-critères */
+    padding: 20px;
+    /* Ajoutez un remplissage pour l'espace autour du contenu */
+    border-radius: 10px;
+    /* Ajoutez une bordure arrondie */
+    margin: 20px auto;
+    /* Ajustez la marge pour réduire l'espace blanc */
+    max-width: 80%;
+    /* Définit une largeur maximale pour éviter que le cadre ne devienne trop large */
+
+  }
+
+  .custom-select {
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+
+  .table thead th {
+    background-color: #f2f2f2;
+    /* Couleur de fond pour les en-têtes de la matrice */
+  }
+
+
+  .matrix-header {
+    background-color: #f2f2f2;
+    /* Couleur de fond pour la première colonne de la matrice */
+  }
+
+  .cr-value {
+    font-weight: bold;
+    /* Mettre en gras */
+    color: black;
+    /* Couleur rouge */
+    font-size: 20px;
+    /* Taille de police plus grande */
+  }
+
+  .criteria-header {
+    color: rgb(133, 198, 163);
+    /* Couleur de texte différente */
+    text-align: left;
+    /* Alignement du texte à gauche */
+  }
+
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .custom-table th,
+  .custom-table td {
+    padding: 8px;
+    text-align: left;
+    color: #008b6d;
+    border: 1px solid #91d5bb;
+  }
+
+  .custom-title {
+    font-size: 18px;
+    color: black;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .btn-primary {
+    background-color: #230f9587;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+
+  .custom-table {
+    width: 100%;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+
+  /* Optionnel : Vous pouvez personnaliser davantage les styles selon vos besoins */
+
+  .card {
+    border-radius: 10px;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+
+  .mr-2 {
+    margin-right: 0.5rem;
+  }
+
+  .mx-sm-3 {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  /* Styles personnalisés pour les cartes */
+  .custom-card {
+    border-radius: 10px;
+    background-color: #bcb5da87;
+    /* Couleur de fond de la carte */
+    border: 1px solid #ced4da;
+    /* Bordure de la carte */
+  }
+
+  .custom-card:hover {
+    box-shadow: 0px 4px 8px rgba(164, 191, 232, 0.1);
+    /* Ombre portée au survol */
+  }
+
+  /* Style personnalisé pour les titres des cartes */
+  .custom-card-title {
+    color: #bcb5da87;
+    /* Couleur du titre */
+    font-size: 20px;
+    /* Taille de police du titre */
+    margin-bottom: 0;
+    /* Marge inférieure du titre */
+  }
+
+  /* Ajoutez d'autres styles personnalisés selon vos besoins */
+</style>
+<main>
+  <section class="section section-lg section-shaped">
+    <div class="shape shape-style-1 shape-primary">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="aa" class="container-etape">
+      <p-tabView [(activeIndex)]="index">
+
+
+        <p-tabPanel header="Etape 1" class="custom-step">
+          <h1 class="custom-title">Project : {{nom}} {{numbreS}} </h1>
+          <div class="row">
+            <div class="col">
+              <input type="text" placeholder="Name your project" name="nom" [(ngModel)]="nom" class="form-control">
+            </div>
+            <div class="col">
+              <label for="inputPassword2" class="sr-only">Nombre de critere</label>
+              <input type="number" name="numbre" [(ngModel)]="numbre" placeholder="Number of criteria"
+                class="form-control">
+            </div>
+          </div>
+          <div class="text-center"> <!-- Nouvelle div pour centrer le bouton -->
+            <button type="submit" class="btn btn-block btn-etape" (click)="showInputs();openNext();addprojet()"> Next
+              Step </button>
+          </div>
+        </p-tabPanel>
+
+        <p-tabPanel header="Etape 2" class="custom-step">
+          <div *ngIf="showinputs">
+            <div class="container border mt-2" style="border-radius: 15px; background-color: #bcb5da87;">
+              <div class="row">
+                <ng-container *ngFor="let item of arrayOne(numbre); let i = index;">
+                  <div class="col-md-6">
+                    <h2 class="custom-subtitle">Criterion : {{form[i]}}</h2>
+                    <form>
+                      <div class="form-group">
+                        <label for="inputCriterion{{i}}" class="sr-only">Enter the name of the Criterion</label>
+                        <input type="text" name="nom" [(ngModel)]="form[i]" class="form-control"
+                          id="inputCriterion{{i}}" placeholder="Enter the name of the Criterion">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputSubCriterion{{i}}" class="sr-only">Number of the Sub-Criterion</label>
+                        <input type="number" name="numbreS" [(ngModel)]="n[i]" class="form-control"
+                          id="inputSubCriterion{{i}}" placeholder="Number of the Sub-Criterion">
+                      </div>
+                      <button type="submit" class="btn btn-etape mb-2 d-flex justify-content-center align-items-center"
+                        (click)="showsous(); showsousCrit(i)">+</button>
+                    </form>
+                  </div>
+                  <div class="col-md-6" *ngIf="showSousCriters[i]">
+                    <ng-container *ngFor="let item of arrayOne(n[i]); let ii = index;">
+                      <div class="form-group">
+                        <label for="subCriterion{{i}}_{{ii}}" class="sr-only">Enter the name of the
+                          Sub-Criterion</label>
+                        <input type="text" name="nom" [(ngModel)]="formS[i][ii]" class="form-control mt-2"
+                          id="subCriterion{{i}}_{{ii}}" placeholder="Enter the name of the Sub-Criterion">
+
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <br>
+            <div class="text-center">
+              <button type="submit" class="btn btn-etape" (click)="showDATA();openNext();addcriters()">Generate the
+                project's tree
+                structure</button>
+            </div>
+          </div>
+             
+        </p-tabPanel>
+
+
+        <p-tabPanel header="Etape 3" class="custom-step">
+          <div *ngIf="showarbre" class="text-left">
+            <h2 class="custom-title">Hierarchical decomposition of criteria</h2>
+            <ngx-org-chart [nodes]="nodes" direction="horizontal"></ngx-org-chart>
+            <button type="submit" class="btn btn-etape" (click)="openNext()">Compare between the Criteria</button>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Etape 4" class="custom-step">
+          <div *ngIf="showarbre" class="text-center">
+            <div *ngIf="showmatrice">
+              <h2 class="custom-title">The comparison matrix of criteria</h2>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th *ngFor="let item of arrayOne(numbre); let i = index;">{{ tableauCriter[i] }}</th>
+                    <th>Weights</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+
+                  <tr *ngFor="let row of arrayOne(numbre); let i = index;">
+                    <td>{{ tableauCriter[i] }}</td>
+                    <td *ngFor="let cell of arrayOne(numbre); let j = index;">
+                      <ng-container *ngIf="i !== j">
+                        <select [(ngModel)]="facteur[i][j]" (change)="updateInverse(i, j, facteur[i][j])"
+                          class="custom-select" [disabled]="i > j || i === j">
+                          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                        </select>
+
+                      </ng-container>
+                      <ng-container *ngIf="i === j">
+                        <select [(ngModel)]="facteur[i][j]" class="custom-select" disabled>
+                          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                        </select>
+                      </ng-container>
+                    </td>
+
+
+
+
+                    <td>{{ etap3PoidsSCR[i] }}</td>
+                  </tr>
+
+
+
+
+
+
+                </tbody>
+              </table>
+            </div>
+
+
+            <div *ngIf="showCR">
+              <h2 class="custom-title">CR Value : <span class="cr-value">{{ CR }}</span></h2>
+              <button type="submit" class="btn btn-etape mb-2"
+                (click)="saveRelationCriter();showinfo();addcriters();envoyerCRVersBaseDeDonnees()">Result</button>
+              <button type="submit" class="btn btn-etape mb-2" (click)="openNext()">Compare between the
+                sub-criteria</button>
+
+            </div>
+
+
+
+
+          </div>
+
+
+
+             
+        </p-tabPanel>
+
+
+
+
+
+        <!-- Début de l'étape 5 -->
+        <p-tabPanel header="Etape 5" class="custom-step">
+          <div *ngIf="showarbre" class="text-center">
+            <h2 class="custom-title" style="text-align: center;">The comparison between sub-criteria </h2>
+
+            <!-- Affichage de la matrice correspondante -->
+            <div *ngFor="let itemm of arrayOne(numbre); let j = index; ">
+              <div *ngIf="j === currentCriterionIndex">
+                <div class="custom-title">
+                  Criteria "{{ tableauCriter[j] }}" :
+                </div>
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th *ngFor="let itemm of arrayOne(n[j]); let i = index; ">{{ formS[j][i] }}</th>
+                      <th>Weights</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let itemm of arrayOne(n[j]); let ii = index; ">
+                      <td>{{ formS[j][ii] }}</td>
+                      <td *ngFor="let item of arrayOne(n[j]); let i = index;">
+                        <ng-container *ngIf="ii !== i">
+                          <select [(ngModel)]="facteurSoucCriter[j][ii][i]"
+                            (change)="updateInverseSous(ii, i, $event.target.value, j)" class="custom-select"
+                            [disabled]="ii > i || ii === i">
+                            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                          </select>
+                        </ng-container>
+                        <ng-container *ngIf="ii === i">
+                          <select [(ngModel)]="facteurSoucCriter[j][ii][i]"
+                            (change)="updateInverseSous(ii, i, $event.target.value, j)" class="custom-select" disabled>
+                            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                          </select>
+                        </ng-container>
+                      </td>
+                      <td *ngIf="etap3Poids[j] && etap3Poids[j][ii]">
+                        {{ isNanOrUndefined(getDisplayedWeight(etap3Poids[j][ii])) ? ' ' :
+                        getDisplayedWeight(etap3Poids[j][ii]) }}
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div>
+                  <!-- Affichage du CR correspondant -->
+                  <h2 class="custom-title">CR Value : <span class="cr-value">
+                      {{ isNanOrUndefined(CRsub[j]) ? ' ' : CRsub[j] }}
+                    </span></h2>
+                </div>
+              </div>
+            </div>
+
+            <!-- Boutons de navigation -->
+            <button type="submit" class="btn btn-etape mb-2" (click)="executeAllFunctions()">Result</button>
+            <button type="submit" class="btn btn-etape mb-2" (click)="openPrevv()">Show Previous Matrix</button>
+            <button type="submit" class="btn btn-etape mb-2" (click)="openNextt()" *ngIf="!isLastMatrix()">Show Next
+              Matrix</button>
+            <button type="submit" class="btn btn-etape mb-2" (click)="openNext()" *ngIf="isLastMatrix()">Show
+              Weights</button>
+          </div>
+        </p-tabPanel>
+
+
+
+
+
+        <p-tabPanel header="Etape 6" class="custom-step">
+          <div *ngIf="showSousmatrice" class="container">
+            <h2 class="custom-title">The normalized sub-criteria weightings</h2>
+            <div class="custom-table-responsive">
+              <table class="table table-borderless" style="width: 1000px;">
+                <thead>
+                  <tr>
+                    <th scope="col" style="font-weight: bold; font-size: 18px; color: black;">Criteria</th>
+                    <th scope="col" style="font-weight: bold; font-size: 18px; color: black;">Level One</th>
+                    <th scope="col" style="font-weight: bold; font-size: 18px; color: black;">Sub-criteria</th>
+                    <th scope="col" style="font-weight: bold; font-size: 18px; color: black;">Level Two</th>
+                  </tr>
+
+                </thead>
+                <tbody>
+                  <tr *ngFor="let itemm of arrayOne(numbre); let j = index;">
+                    <td style="color: black; ">{{ form[j] }}</td>
+                    <td style="color: black; ">{{ etap3PoidsSCR[j] }}</td>
+                    <td style="color: black;">
+                      <ul style="list-style-type: none; padding-left: 0;">
+                        <li *ngFor="let itemm of arrayOne(n[j]); let i = index;">{{ formS[j][i] }}</li>
+                      </ul>
+                    </td>
+                    <td style="color: black;">
+                      <ul style="list-style-type: none; padding-left: 0;">
+                        <li *ngFor="let itemm of arrayOne(n[j]); let i = index;">{{ leveltwo[j][i] }}</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-etape mb-2" (click)="openNext()">Go to TOPSIS Method</button>
+            </div>
+          </div>
+        </p-tabPanel>
+
+
+        <p-tabPanel header="Etape 7" class="custom-step">
+          <div class="container">
+            <form class="form-inline mb-4">
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="numbreAlternative" class="mr-2">Number of Alternatives:</label>
+                <input type="number" id="numbreAlternative" name="numbreAlternative" [(ngModel)]="numbreAlternative"
+                  class="form-control">
+              </div>
+              <button type="button" class="btn btn-etape mb-2 mr-3" (click)="showALternatives();addprojet()">Add
+                Alternatives</button>
+            </form>
+
+            <div *ngIf="showalterINputsAlternative" class="d-flex flex-wrap">
+              <div *ngFor="let item of arrayOne(numbreAlternative); let i = index;" class="mr-3 mb-3">
+                <div class="card custom-card" style="width: 200px;"> <!-- Définissez la largeur souhaitée -->
+                  <div class="card-body">
+                    <h5 class="card-title custom-card-title" style="font-weight: bold; color: black;">Alternative {{ i +
+                      1 }}</h5>
+                    <div class="form-group">
+                      <input type="text" id="alternativeName{{ i }}" name="alternativeName{{ i }}"
+                        [(ngModel)]="alternative[i]" class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-etape mb-2" (click)="showetap7();openNext();">Relation between
+              Sub-Creteria and Alternatives</button>
+          </div>
+        </p-tabPanel>
+
+
+
+        <p-tabPanel header="Etape 8" class="custom-step">
+          <div *ngIf="showtab7">
+            <h2 class="display-3" style="text-align: center;" class="custom-title">Input values of the TOPSIS analysis
+            </h2>
+
+
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th> Criteria </th>
+                  <th> Weights </th>
+                  <th *ngFor="let item of arrayOne(numbreAlternative); let i = index;"> {{alternative[i]}} </th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of arrayOne(numbre); let j = index;">
+                <tr *ngFor="let item of arrayOne(n[j]); let i = index;">
+                  <td>{{formS[j][i]}}</td>
+                  <td>{{leveltwo[j][i]}}</td>
+                  <td *ngFor="let item of arrayOne(numbreAlternative); let jj = index;">
+                    <select (change)="xx($event.target,j,i,jj)" class="custom-select">
+                      <option selected>Fill a number </option>
+                      <option *ngFor="let user of altfact" [value]="user">{{ user }}</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-etape mb-2"
+              (click)="show();etap1topsis();etap2topsis();openNext();saveSousCriterAlternative()">
+              Show the weighted normalized decision matrix </button>
+
+          </div>
+
+        </p-tabPanel>
+        <p-tabPanel header="Etape 9">
+          <div *ngIf="showtab7">
+
+            <h2 class="display-3" style="text-align: center;">Show the weighted normalized decision matrix </h2>
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th> Criteria </th>
+
+                  <th *ngFor="let item of arrayOne(numbreAlternative); let i = index;"> {{alternative[i]}} </th>
+                  <th>+</th>
+                  <th>-</th>
+                  <th>A*</th>
+                  <th>A-</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of arrayOne(numbre); let j = index;">
+                <tr *ngFor="let item of arrayOne(n[j]); let i = index;">
+                  <td>{{formS[j][i]}}</td>
+                  <td *ngFor="let item of arrayOne(numbreAlternative); let jj = index;">
+                    {{facteur2alternative[j][i][jj]}}
+                  </td>
+                  <td> <input type="radio" name="{{formS[j][i]}}" value="Female" (click)="setradio('+',j,i)"> </td>
+                  <td><input type="radio" name="{{formS[j][i]}}" value="Male" (click)="setradio('-',j,i)"> </td>
+                  <td>{{aplus[j][i]}}</td>
+                  <td>{{amoins[j][i]}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-primary mb-2" (click)=" etapfinal1();openNext()"> Show the final
+              evaluation and ranking of alternatives </button>
+          </div>
+
+
+             
+        </p-tabPanel>
+
+        <p-tabPanel header="Etape 10" class="custom-step">
+          <div *ngIf="showetapetapfinaltopsis">
+            <h2 class="display-3" style="text-align: center;" class="custom-title">The final evaluation and ranking of
+              alternatives </h2>
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th> </th>
+                  <th>D*</th>
+                  <th>D-</th>
+                  <th>Ci</th>
+                  <th>Rank</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of arrayOne(numbreAlternative); let i = index;">
+                  <td>{{alternative[i]}}</td>
+                  <td>{{dplus[i]}}</td>
+                  <td>{{dmoins[i]}}</td>
+                  <td>{{ci[i]}}</td>
+                  <td>{{ranks[i]}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-etape mb-2" (click)="showstep11(leveltwo)">Show Permutations</button>
+          </div>
+        </p-tabPanel>
+
+        <!-- Utilisez les permutations stockées pour afficher les itérations dans le tableau -->
+        <p-tabPanel header="Etape 11" class="custom-step">
+          <div *ngIf="showTable">
+            <h2 class="custom-title">Tableau d'itérations pour les sous-critères</h2>
+            <table class="table table-hover" style="width: 1000px; border: none;">
+              <thead style="background-color: #88baaf;">
+                <tr>
+                  <th>Itération/SubCriteria</th>
+                  <!-- Boucle sur les sous-critères pour afficher les en-têtes -->
+                  <ng-container *ngFor="let sub of arrayOne(numbre); let j = index;">
+                    <ng-container *ngFor="let item of arrayOne(n[j]); let i = index;">
+                      <th style="font-weight: bold; font-size: 15px; color: black;">{{ formS[j][i] }}</th>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Utilisation des permutations stockées pour afficher les itérations -->
+                <tr *ngFor="let perm of permutations; let p = index;">
+                  <td style="font-weight: bold; font-size: 15px; color: black;">{{ p === permutations.length - 1 ?
+                    'Equal' : p + 1 }}</td>
+                  <ng-container *ngFor="let val of perm; let k = index;">
+                    <td>{{ val }}</td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+            <button type="submit" class="btn btn-etape mb-2" (click)="drawRanksGraph();openNext()">Show All
+              Ranks</button>
+
+          </div>
+        </p-tabPanel>
+
+        <p-tabPanel header="Etape 12" class="custom-step" *ngIf="showIntermediateStep">
+          <div *ngIf="showIntermediateStep">
+            <h2 class="custom-title">Tableau des itérations pour les permutations</h2>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Permutation</th>
+                  <th *ngFor="let alt of alternativeNames">{{ alt }}</th>
+                  <th>Rang</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let perm of permutations; let i = index">
+                  <td>{{ i === permutations.length - 1 ? 'Moyenne' : i + 1 }}</td>
+                  <td *ngFor="let ci of ciParPermutation[i]">{{ ci.toFixed(3) }}</td>
+                  <td>{{ getAlternativeNames(i, ranksParPermutation[i]).join(', ') }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="submit" class="btn btn-etape mb-2" (click)="openNext()">Show The Graph </button>
+
+          </div>
+        </p-tabPanel>
+
+        <p-tabPanel header="Etape 13" class="custom-step" *ngIf="showEtape12">
+          <div>
+            <h2 class="custom-title">Sensitivity Analysis</h2>
+            <svg #mySvg width="800" height="400"></svg>
+          </div>
+        </p-tabPanel>
+
+      </p-tabView>
+
+      <!--
+<p-button icon="pi " (click)="openPrev()"> </p-button>
+<p-button icon="pi " (click)="openNext()"> suivant </p-button>
+
+-->
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+
+  </section>      
+</main>

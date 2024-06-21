@@ -1,0 +1,116 @@
+<style>
+  .btn-dashboard {
+    background-color: rgb(86, 79, 165); /* Couleur de fond pour le bouton Dashboard */
+    color: #fff; /* Couleur du texte pour le bouton Dashboard */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Ajoute une bordure arrondie */
+    padding: 10px 20px; /* Ajoute un remplissage intérieur */
+    margin-right: 10px; /* Ajoute une marge à droite pour l'espacement */
+}
+
+.btn-dashboard:hover {
+    background-color: #231b5287; /* Couleur de fond au survol du bouton Dashboard */
+}
+
+.btn-deconnexion {
+    background-color: rgb(86, 79, 165); /* Couleur de fond pour le bouton Déconnexion */
+    color: #fff; /* Couleur du texte pour le bouton Déconnexion */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Ajoute une bordure arrondie */
+    padding: 10px 20px; /* Ajoute un remplissage intérieur */
+}
+
+.btn-deconnexion:hover {
+    background-color: #2b189487; /* Couleur de fond au survol du bouton Déconnexion */
+}
+
+</style>
+
+<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
+  <div class="container">
+  
+      <img src="./assets/img/brand/decisioon.png">
+    
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a [routerLink]="['/home']">
+              <img src="./assets/img/brand/blue.png">
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+                  [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+        <li class="nav-item ">
+          <a class="nav-link no-caret  btn-ahp" data-toggle="dropdown" role="button"  style="color:#2b189487">
+            <i class="ni ni-ui-04 d-lg-none"></i>
+            <span class="nav-link-inner--text">  AHP</span>
+          </a>
+         
+        </li>
+        <li class="nav-item">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button" style="color:#2b189487">
+            <i class="ni ni-collection d-lg-none" ></i>
+            <span class="nav-link-inner--text">TOPSIS</span>
+          </a>
+       <!--   <div class="dropdown-menu">
+            <a [routerLink]="['/landing']" class="dropdown-item">Landing</a>
+            <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a>
+            <a [routerLink]="['/login']" class="dropdown-item">Login</a>
+            <a [routerLink]="['/register']" class="dropdown-item">Register</a>
+          </div> -->
+        </li>
+      </ul>
+       <ul class="navbar-nav ml-lg-auto">
+                <li *ngIf="!isLoggedIn" class="nav-item">
+                    <a  class="nav-link nav-link-icon" href="#">
+                        <i class="ni ni-favourite-28"></i>
+                        <span class="nav-link-inner--text d-lg-none">Discover</span>
+                    </a>
+                </li>
+                <li *ngIf="!isLoggedIn" class="nav-item">
+                    <a class="nav-link nav-link-icon" href="#">
+                        <i class="ni ni-notification-70"></i>
+                        <span class="nav-link-inner--text d-lg-none">Profile</span>
+                    </a>
+                </li>
+                <li *ngIf="isLoggedIn" class="nav-item">
+                  <button class="btn btn-dashboard" [routerLink]="['/firstpage']" type="button">
+                      <i class="fa fa-home" aria-hidden="true"></i> Dashboard
+                  </button>
+              </li>
+              <li *ngIf="isLoggedIn" class="nav-item">
+                  <button class="btn btn-deconnexion" type="button" (click)="logout()">
+                      <i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion
+                  </button>
+              </li>
+              
+                <li *ngIf="!isLoggedIn" class="nav-item dropdown">
+                    <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="ni ni-settings-gear-65"></i>
+                        <span class="nav-link-inner--text d-lg-none">Settings</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+     
+    </div>
+  </div>
+</nav>

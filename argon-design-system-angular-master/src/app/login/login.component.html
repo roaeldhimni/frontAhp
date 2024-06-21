@@ -1,0 +1,89 @@
+<style>
+  
+  .btn-signin {
+    background-color: #230f9587; /* Couleur de fond pour le bouton Dashboard */
+    color: #fff; /* Couleur du texte pour le bouton Dashboard */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Ajoute une bordure arrondie */
+    padding: 10px 20px; /* Ajoute un remplissage intérieur */
+    margin-right: 10px; /* Ajoute une marge à droite pour l'espacement */
+}
+
+.btn-signin:hover {
+    background-color: rgb(86, 79, 165); /* Couleur de fond au survol du bouton Dashboard */
+}
+
+.btn-create {
+    background-color: #230f9587; /* Couleur de fond pour le bouton Déconnexion */
+    color: #fff; /* Couleur du texte pour le bouton Déconnexion */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Ajoute une bordure arrondie */
+    padding: 10px 20px; /* Ajoute un remplissage intérieur */
+}
+
+.btn-create:hover {
+    background-color: rgb(86, 79, 165); /* Couleur de fond au survol du bouton Déconnexion */
+}
+
+
+
+</style>
+
+<main>
+  <section class="section section-hero section-shaped section-lg">
+    <div class="shape shape-style-1 shape-primary">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div *ngIf="sucess" class="alert alert-success" role="alert">
+            {{message}}
+          </div>
+          <div *ngIf="danger" class="alert alert-danger" role="alert">
+           {{message}}
+          </div>
+          <div class="card bg-secondary shadow border-0">
+           
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-center text-muted mb-4">
+                <h1>Login </h1>
+              </div>
+              <form role="form">
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Username" type="text" [(ngModel)]="form.username" [ngModelOptions]="{standalone: true}" (focus)="focus=true" (blur)="focus=false">
+                  </div>
+                </div>
+                <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Password" type="password" [(ngModel)]="form.password"  [ngModelOptions]="{standalone: true}"(focus)="focus1=true" (blur)="focus1=false">
+                  </div>
+                </div>
+                
+                <div class="text-center">
+                  <button type="button" class="btn btn-signin my-4" (click)="validation()">Sign in</button><br>
+                  <button type="button" [routerLink]="['/login']" class="btn btn-create">Create Account</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
